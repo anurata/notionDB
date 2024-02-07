@@ -37,8 +37,9 @@ class _ChangeFormState extends State<ChangeForm> {
   }
 
   Widget build(BuildContext context) {
-    NotionClient notion =
-        NotionClient(token: 'YOUR SECRET TOKEN FROM INTEGRATIONS PAGE');
+    // NotionClient notion = NotionClient(
+    //      token: 'secret_95VBgtjnVZkntYOvHkPGrAV1Os6p4FxgLLc8MR5sW4a');
+    final TextEditingController _controller = TextEditingController();
 
     return Container(
         padding: const EdgeInsets.all(50.0),
@@ -57,6 +58,19 @@ class _ChangeFormState extends State<ChangeForm> {
               child: Text(
                 '更新',
                 style: TextStyle(color: Colors.white, fontSize: 20.0),
+              ),
+            ),
+            TextField(
+              controller: _controller,
+              decoration: InputDecoration(
+                prefixIcon: IconButton(
+                    icon: const Icon(Icons.arrow_back),
+                    onPressed: () {
+                      FocusScope.of(context).unfocus();
+                      //notionDatabaseNotifier.endInput();
+                    }),
+                border: const OutlineInputBorder(),
+                hintText: 'タイトル',
               ),
             )
           ],
